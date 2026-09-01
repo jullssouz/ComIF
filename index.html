@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %} Cardápio Escolar {% endblock title %}
+
+{% block titulo %} Cardápio do Dia {% endblock titulo %}
+
+{% block conteudo %}
+<div class="descricao">
+    <p>Consulta do cardápio escolar do dia <strong>{{ hoje }}</strong>.</p>
+    <p>Os alunos podem visualizar as refeições, os ingredientes e as informações principais sem precisar editar os
+        dados.</p>
+</div>
+
+{% if refeicoes %}
+<div id="todos_cards">
+    {% for refeicao in refeicoes %}
+    <div class="card">
+        <h2>{{ refeicao.nome_prato }}</h2>
+        <p><strong>Categoria:</strong> {{ refeicao.categoria }}</p>
+        <p><strong>Ingredientes:</strong> {{ refeicao.ingredientes }}</p>
+        {% if refeicao.observacao %}
+        <p><strong>Observação:</strong> {{ refeicao.observacao }}</p>
+        {% endif %}
+        <div class="botoes">
+            <a href="{{ url_for('ver_refeicao', id_refeicao=refeicao.id_refeicao) }}">
+                <button type="button" class="btn">Ver detalhes</button>
+            </a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="mensagem-vazia">
+    <p>Nenhuma refeição cadastrada para hoje.</p>
+</div>
+{% endif %}
+{% endblock conteudo %}

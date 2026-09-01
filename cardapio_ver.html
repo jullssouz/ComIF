@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %} Refeição {% endblock title %}
+
+{% block titulo %} {{ refeicao.nome_prato }} {% endblock titulo %}
+
+{% block conteudo %}
+<div class="completo">
+  <p><strong>Categoria:</strong> {{ refeicao.categoria }}</p>
+  <p><strong>Ingredientes:</strong> {{ refeicao.ingredientes }}</p>
+  <p><strong>Observação:</strong> {{ refeicao.observacao or 'Sem observações adicionais.' }}</p>
+
+  <div class="botoes">
+    <a href="{{ url_for('editar_refeicao', id_refeicao=id_refeicao) }}">
+      <button type="button" class="btn">Editar</button>
+    </a>
+    <form action="{{ url_for('deletar_refeicao', id_refeicao=id_refeicao) }}" method="POST">
+      <button type="submit" class="btn deletar">Deletar</button>
+    </form>
+  </div>
+</div>
+{% endblock conteudo %}

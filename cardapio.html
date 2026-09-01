@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %} Cardápio Escolar {% endblock title %}
+
+{% block titulo %} Cardápio da Escola {% endblock titulo %}
+
+{% block conteudo %}
+<div class="descricao">
+  <p>Confira as refeições disponíveis para os alunos.</p>
+</div>
+
+<a href="{{ url_for('adicionar_refeicao') }}"><button class="btn" type="button">Adicionar Refeição</button></a>
+
+{% if refeicoes %}
+<div id="todos_cards">
+  {% for refeicao in refeicoes %}
+  <div class="card">
+    <h2>{{ refeicao.nome_prato }}</h2>
+    <p><strong>Categoria:</strong> {{ refeicao.categoria }}</p>
+    <p><strong>Ingredientes:</strong> {{ refeicao.ingredientes }}</p>
+    {% if refeicao.observacao %}
+    <p><strong>Observação:</strong> {{ refeicao.observacao }}</p>
+    {% endif %}
+    <div class="botoes">
+      <a href="{{ url_for('ver_refeicao', id_refeicao=refeicao.id_refeicao) }}">
+        <button type="button" class="btn">Ver detalhes</button>
+      </a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% else %}
+<div class="mensagem-vazia">
+  <p>Nenhuma refeição cadastrada.</p>
+</div>
+{% endif %}
+{% endblock conteudo %}

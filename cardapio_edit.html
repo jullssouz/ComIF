@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %} Editar Refeição {% endblock title %}
+
+{% block titulo %} Editar Refeição {% endblock titulo %}
+
+{% block conteudo %}
+<form class="completo form" action="{{ url_for('editar_refeicao', id_refeicao=id_refeicao) }}" method="post">
+  <label for="nome_prato">Nome do prato</label>
+  <input type="text" id="nome_prato" name="nome_prato" minlength="3" maxlength="80" value="{{ refeicao.nome_prato }}"
+    required>
+
+  <label for="categoria">Categoria</label>
+  <input type="text" id="categoria" name="categoria" minlength="3" maxlength="30" value="{{ refeicao.categoria }}"
+    required>
+
+  <label for="ingredientes">Ingredientes</label>
+  <textarea id="ingredientes" name="ingredientes" minlength="10" maxlength="500" rows="6"
+    required>{{ refeicao.ingredientes }}</textarea>
+
+  <label for="observacao">Observação</label>
+  <textarea id="observacao" name="observacao" maxlength="300" rows="4">{{ refeicao.observacao }}</textarea>
+
+  <div class="botoes">
+    <button type="reset" class="btn">Limpar</button>
+    <button type="submit" class="btn salvar">Salvar</button>
+  </div>
+</form>
+{% endblock conteudo %}
