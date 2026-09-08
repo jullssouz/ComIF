@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %} Nova Refeição {% endblock title %}
+
+{% block titulo %} Cadastrar Refeição {% endblock titulo %}
+
+{% block conteudo %}
+<div class="app-container">
+    <h1 class="logo-title">COMIF</h1>
+
+    <div class="content-card">
+        <h2 style="color: #ffffff; font-size: 1.2rem; margin-bottom: 10px; text-align: center;">
+            Cadastrar Refeição
+        </h2>
+
+        <form method="POST" action="{{ url_for('cadastrar_cardapio') }}" class="form-edicao">
+            
+            <div class="campo-grupo">
+                <label for="nome">Nome do Prato:</label>
+                <input type="text" id="nome" name="nome" placeholder="Ex: Cuscuz com Ovos" required>
+            </div>
+
+            <div class="campo-grupo">
+                <label for="tipo">Turno / Refeição:</label>
+                <!-- Seleção obrigatória entre Café da Manhã e Almoço -->
+                <select id="tipo" name="tipo" required>
+                    <option value="" disabled selected>Selecione uma opção...</option>
+                    <option value="cafe">Café da Manhã</option>
+                    <option value="almoco">Almoço</option>
+                </select>
+            </div>
+
+            <div class="campo-grupo">
+                <label for="data">Data:</label>
+                <input type="date" id="data" name="data" required>
+            </div>
+
+            <div class="campo-grupo">
+                <label for="ingredientes">Ingredientes:</label>
+                <textarea id="ingredientes" name="ingredientes" placeholder="Liste os ingredientes..." required></textarea>
+            </div>
+
+            <div class="botoes-form">
+                <button type="submit" class="btn-salvar">Cadastrar</button>
+                <a href="{{ url_for('alunovisualizar') }}" class="btn-cancelar">Cancelar</a>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+{% endblock conteudo %}

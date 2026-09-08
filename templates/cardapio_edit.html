@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %} COMIF - Editar Cardápio {% endblock title %}
+
+{% block conteudo %}
+<div class="app-container">
+        <h1 class="logo-title">COMIF</h1>
+
+        <div class="content-card">
+            <h2 style="color: #ffffff; font-size: 1.2rem; margin-bottom: 10px; text-align: center;">
+                Editar Refeição
+            </h2>
+
+            <form method="POST" action="{{ url_for('editar_cardapio', id=cardapio.id) }}" class="form-edicao">
+                
+                <div class="campo-grupo">
+                    <label for="nome">Nome do Prato:</label>
+                    <input type="text" id="nome" name="nome" value="{{ cardapio.nome }}" required>
+                </div>
+
+                <div class="campo-grupo">
+                    <label for="tipo">Turno / Refeição:</label>
+                    <select id="tipo" name="tipo" required>
+                        <option value="cafe" {{ 'selected' if cardapio.tipo == 'cafe' else '' }}>Café da Manhã</option>
+                        <option value="almoco" {{ 'selected' if cardapio.tipo == 'almoco' else '' }}>Almoço</option>
+                    </select>
+                </div>
+
+                <div class="campo-grupo">
+                    <label for="data">Data:</label>
+                    <input type="date" id="data" name="data" value="{{ cardapio.data.strftime('%Y-%m-%d') }}" required>
+                </div>
+
+                <div class="campo-grupo">
+                    <label for="ingredientes">Ingredientes:</label>
+                    <textarea id="ingredientes" name="ingredientes" required>{{ cardapio.ingredientes }}</textarea>
+                </div>
+
+                <div class="botoes-form">
+                    <button type="submit" class="btn-salvar">Salvar</button>
+                    <a href="{{ url_for('alunovisualizar', tipo=cardapio.tipo) }}" class="btn-cancelar">Cancelar</a>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+{% endblock conteudo %}

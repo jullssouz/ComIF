@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %} Deletar {% endblock title %}
+
+{% block titulo %} deletar cardapioo {% endblock titulo %}
+
+{% block conteudo %}
+{% if pode_editar %}
+    <div class="botoes-card-edicao">
+        <a href="{{ url_for('editar_cardapio', id=item.id) }}" class="btn-editar">Editar</a>
+        
+        <!-- Botão Deletar conectando com a rota Flask -->
+        <a href="{{ url_for('deletar_cardapio', id=item.id) }}" 
+           class="btn-deletar" 
+           onclick="return confirm('Tem certeza que deseja excluir a refeição {{ item.nome }}?')">
+           Excluir
+        </a>
+    </div>
+{% endif %}
+
+{% endblock conteudo %}

@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %} Cardápio Escolar {% endblock title %}
+
+{% block titulo %} COMIF - Visualizar Cardápio {% endblock titulo %}
+
+{% block conteudo %}
+<div class="app-container">
+    <h1 class="logo-title">COMIF</h1>
+
+    <div class="nav-buttons">
+        <a href="{{ url_for('alunovisualizar', tipo='cafe') }}" 
+            class="btn-aba {{ 'ativo' if tipo_refeicao == 'cafe' else '' }}">
+            MANHÃ
+        </a>
+        <a href="{{ url_for('alunovisualizar', tipo='almoco') }}" 
+            class="btn-aba {{ 'ativo' if tipo_refeicao == 'almoco' else '' }}">
+            ALMOÇO
+        </a>
+    </div>
+
+    <div class="content-card">
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alerta {{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% if pode_editar %}
+            <div class="acoes-admin">
+                <a href="{{ url_for('cadastrar_cardapio') }}" class="btn-cadastrar">+ Nova Refeição</a>
+            </div>
+        {% endif %}
+
+        {% if cardapios %}
+            {% for item in cardapios %}
+                <div class="cardapio-item">
+                    <div class="cardapio-data">{{ item.data.strftime('%d/%m/%Y') }}</div>
+                    <div class="cardapio-nome">{{ item.nome }}</div>
+                    <div class="cardapio-ingredientes">
+                        <strong>Ingredientes:</strong> {{ item.ingredientes }}
+                    </div>
+
+                    {% if pode_editar %}
+                        <div class="botoes-card-edicao">
+                            <a href="{{ url_for('editar_cardapio', id=item.id) }}" class="btn-editar">Editar</a>
+                            <a href="{{ url_for('deletar_cardapio', id=item.id) }}" 
+                                class="btn-deletar" 
+                                onclick="return confirm('Tem certeza que deseja excluir esta refeição?')">Excluir</a>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="sem-registro">Nenhum cardápio cadastrado para esta opção.</p>
+        {% endif %}
+
+    </div>
+</div>
+{% endif %}
+{% endblock conteudo %}

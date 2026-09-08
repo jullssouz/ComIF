@@ -1,0 +1,233 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+body {
+    background: linear-gradient(180deg, #184242 0%, #0d2829 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+/* Container principal (estilo mobile) */
+.app-container {
+    width: 100%;
+    max-width: 380px;
+    background: linear-gradient(180deg, #53c8b6 0%, #40928e 50%, #205357 100%);
+    border-radius: 20px;
+    padding: 25px 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Título COMIF */
+.logo-title {
+    color: #ffffff;
+    font-size: 2.8rem;
+    font-weight: normal;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Menu de Navegação (Abas) */
+.nav-buttons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    width: 100%;
+    justify-content: center;
+}
+
+.btn-aba {
+    background-color: #2b5555;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 8px 24px;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.btn-aba.ativo {
+    background-color: #1e3f40;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Cartão que agrupa o conteúdo */
+.content-card {
+    background-color: rgba(255, 255, 255, 0.35);
+    width: 100%;
+    border-radius: 25px;
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    backdrop-filter: blur(5px);
+    position: relative;
+    min-height: 480px;
+}
+
+/* Cards individuais para cada data do banco */
+.cardapio-item {
+    background-color: #476a6b;
+    border-radius: 20px;
+    padding: 16px;
+    color: #ffffff;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+}
+
+.cardapio-data {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.cardapio-nome {
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: #aae2da;
+    margin-bottom: 4px;
+}
+
+.cardapio-ingredientes {
+    font-family: Arial, sans-serif;
+    font-size: 0.85rem;
+    color: #e2f1f1;
+    line-height: 1.3;
+}
+
+.sem-registro {
+    color: #ffffff;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 0.9rem;
+    margin-top: 20px;
+}
+
+/* Logo minimalista no canto inferior */
+.if-logo {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    display: grid;
+    grid-template-columns: repeat(3, 8px);
+    grid-gap: 3px;
+}
+
+.if-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #ffffff;
+    border-radius: 1px;
+}
+
+.if-dot.red {
+    background-color: #d93025;
+    border-radius: 50%;
+}
+
+/* Estilos para telas de formulário/edição */
+.form-edicao {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.campo-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.campo-grupo label {
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.campo-grupo input, 
+.campo-grupo select, 
+.campo-grupo textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: #e2f1f1;
+    color: #1e3f40;
+    font-family: Arial, sans-serif;
+    font-size: 0.9rem;
+}
+
+.campo-grupo textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.botoes-form {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.btn-salvar {
+    flex: 2;
+    background-color: #2b5555;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 10px;
+    border-radius: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn-cancelar {
+    flex: 1;
+    background-color: #8c3b3b;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 15px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+
+.botoes-card-edicao {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.btn-editar, .btn-deletar {
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn-editar {
+    background-color: #2b5555;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-deletar {
+    background-color: #8c3b3b;
+    color: #ffffff;
+}
